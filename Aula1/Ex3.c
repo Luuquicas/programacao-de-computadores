@@ -16,4 +16,6 @@ if(num%2 == 0){
 }else{
     printf("O numero %d eh primo", num);
 }
+
+return 0;
 }

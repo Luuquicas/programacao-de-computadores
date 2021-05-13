@@ -15,4 +15,6 @@ if(ano%400 == 0 || ano%4 == 0 && ano%100 != 0){
 }else{
     printf("O ano %d nao eh bissexto.", ano);
 }
+
+return 0;
 }

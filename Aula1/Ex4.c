@@ -18,4 +18,6 @@ while(num != -1){
 }
 
 printf("O maior numero eh %d", maior);
+
+return 0;
 }

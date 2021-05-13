@@ -22,4 +22,6 @@ int main()
             printf("O triangulo eh escaleno");
         }
     }
+
+    return 0;
 }

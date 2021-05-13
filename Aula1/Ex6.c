@@ -7,7 +7,7 @@ Leia uma matriz 3 x 3. Leia também um valor X. O programa deverá fazer uma bus
 
 int main(){
 
-    int matriz[3][3],x;
+    int matriz[3][3],x,num;
     int i,j;
 
     for(i=0;i<3;i++){
@@ -22,11 +22,12 @@ int main(){
     for(i=0;i<3;i++){
         for(j=0;j<3;j++){
             if(matriz[i][j] == x){
-                printf("Matriz[%d][%d] = %d\n", i, j, x);
+                printf("Matriz[%d][%d] = %d", i, j, matriz[i][j]);
                 break;
             }
         }
     }
+    
 
 
 

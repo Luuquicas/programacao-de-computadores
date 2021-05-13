@@ -8,23 +8,39 @@ Leia um vetor com 15 números inteiros. Armazene em um segundo vetor a ordenaç�
 
 int main(){
 
-int vetor[15];
-int i;
+int v1[15],v2[15];
+int i,j=13,k=0,l=0;
 
 for(i=0;i<15;i++){
-    scanf("%d", &vetor[i]);
+    scanf("%d", &v1[i]);
 }
 
+/*
 for(i=14;i>0;i--){
-    if(vetor[i]%2 == 0){
-        printf("%d\n", vetor[i]);
+    if(v1[i]%2 == 0){
+        printf("%d\n", v1[i]);
     }
 }
 for(i=0;i<15;i++){
-    if(vetor[i]%2 != 0){
-        printf("%d\n", vetor[i]);
+    if(v1[i]%2 != 0){
+        printf("%d\n", v1[i]);
     }
 }
+*/
+while(j>=1){
+    v2[i]=v1[j];
+    j=j-2;
+    i++;
+}
+while(k<=14){
+    v2[i]=v1[k];
+    k=k+2;
+    i++;
+}
+for(i=0;i<15;i++){
+    printf("V2[%d] = %d\n", i, v2[i]);
+}
+    
 
 return 0;
 }

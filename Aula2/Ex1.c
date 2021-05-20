@@ -20,7 +20,7 @@ int main(){
     int numero,fat;
 
     printf("Informe o numero:\n");
-    scanf("%d",numero);
+    scanf("%d",&numero);
     fat=fatorial(numero);
     printf("O fatorial de %d eh %d\n",numero,fat);
 

@@ -15,7 +15,7 @@ for(i=0;i<15;i++){
     scanf("%d", &v1[i]);
 }
 
-/*
+
 for(i=14;i>0;i--){
     if(v1[i]%2 == 0){
         printf("%d\n", v1[i]);
@@ -26,7 +26,7 @@ for(i=0;i<15;i++){
         printf("%d\n", v1[i]);
     }
 }
-*/
+
 while(j>=1){
     v2[i]=v1[j];
     j=j-2;

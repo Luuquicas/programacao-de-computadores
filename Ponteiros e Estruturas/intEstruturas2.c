@@ -1,5 +1,6 @@
 #include <stdio.h>
 
+//Declaração global
 struct horario
     {
         int horas;
@@ -7,6 +8,7 @@ struct horario
         int segundos;
     };
 
+//Função struct
 struct horario teste(struct horario x){
 
     printf("%i:%i:%i\n", x.horas, x.minutos, x.segundos);
@@ -18,6 +20,7 @@ struct horario teste(struct horario x){
     return x;
 }
 
+//Organiza tudo na main
 int main(){
 
     struct horario agora;

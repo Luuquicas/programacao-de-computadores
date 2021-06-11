@@ -14,24 +14,25 @@ int absoluto(int n){
 }
 
 int divisor(int n){
-    int i=1,soma=0;
+    int i,soma=0;
 
-    while(i<n){
+    for(i=0;i<n;i++){
         if(n%i == 0){
             soma += i;
         }
-        i++;
     }
     return soma;
 }
 
 int main(){
-    int num, i;
+    int num, i,res;
 
     for(i=0;i<5;i++){
         printf("Informe o valor %d:\n",i+1);
         scanf("%d", &num);
-        printf("O absoluto de %d eh %d\n", num, absoluto(num));
+        //printf("O absoluto de %d eh %d\n", num, absoluto(num));
+        res=divisor(num);
+        printf("A soma dos divisores de %d eh %d\n", num, res);
     }
 
     return 0;

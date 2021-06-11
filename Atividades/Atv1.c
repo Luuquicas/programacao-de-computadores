@@ -1,10 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-/**
- * Leia um vetor de 15 numeros inteiros. Armazene em um segundo vetor a ordenação do primeiro da
- * seguinte forma, ressaltando que 1° indica o menor valor, e 15° o maior valor.
- * */
+/*
+Leia um vetor de 15 numeros inteiros. Armazene em um segundo vetor a ordenação do primeiro da
+seguinte forma, ressaltando que 1° indica o menor valor, e 15° o maior valor.
+*/
 
 int ordenaVetor(int v1[],int v2[]){
     int i=0,j=13,k=0;

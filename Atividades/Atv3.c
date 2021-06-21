@@ -21,6 +21,8 @@ void acimaCem(float total){
     if(total>100){
         printf("Escolha parcelas de 3 ate 10 vezes: ");
         scanf("%d", &op);
+        float juros = total*0.03*(float)op;
+        printf("\nPreco parcelado em %d vezes de R$%.2f+juros de 0.03 ao mes, Preco final=R$%.2f\n", op, total/op, total+juros);
     }else{
         printf("Nao se encaixa nesta opcao!!!");
         return;

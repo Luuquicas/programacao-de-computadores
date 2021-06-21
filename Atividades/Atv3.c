@@ -9,34 +9,43 @@
 3) Opção: de 3 até 10 vezes com 3% de juros ao mês (somente para compras acima de R$ 100,00).
 */
 
-void aVista(float total){
-    float res = total*0.10;
-    printf("\nPreco a vista com 10 porcento de desconto: R$%.2f\n", total-res);
+void aVista(float preco){
+    float res = preco*0.10;
+    printf("\nPreco a vista com 10 porcento de desconto: R$%.2f\n", preco-res);
 }
-void duasVezes(float total){
-    printf("\nPreco parcelado em 2 vezes de R$%.2f\n", total/2);
+void duasVezes(float preco){
+    printf("\nPreco parcelado em 2 vezes de R$%.2f\n", preco/2);
 }
-void acimaCem(float total){
+void acimaCem(float preco){
     int op;
-    if(total>100){
+    if(preco>100){
         printf("Escolha parcelas de 3 ate 10 vezes: ");
         scanf("%d", &op);
-        float juros = total*0.03*(float)op;
-        printf("\nPreco parcelado em %d vezes de R$%.2f+juros de 0.03 ao mes, Preco final=R$%.2f\n", op, total/op, total+juros);
+        float juros = preco*0.03*(float)op;
+        printf("\nPreco parcelado em %d vezes de R$%.2f+juros de 0.03 ao mes, Preco final=R$%.2f\n", op, preco/op, preco+juros);
     }else{
-        printf("Nao se encaixa nesta opcao!!!");
+        printf("Nao se encaixa nesta opcao!!!\n");
         return;
     }
 }
 
 int main(){
+    char ops;
     int op;
-    float total;
-    printf("Informe o preco: ");
-    scanf("%f", &total);
-    printf("\n\tOPCOES DE PAGAMENTO:\n\t1--- A vista\n\t2--- Em 2x\n\t3--- Parcelamento + juros\n\t0--- Sair\n");
-    scanf("%d", &op);
-    while(op!=0){
+    float total=0,preco;
+
+    do{
+        total=0;
+		printf("Informe os precos:\n");
+	    scanf("%f",&preco);
+		do{
+			total=total+preco;
+			scanf("%f",&preco);
+		}while(preco != -1);
+        printf("\nTotal = R$%.2f\n", total);
+
+        printf("\n\tOPCOES DE PAGAMENTO:\n\t1--- A vista\n\t2--- Em 2x\n\t3--- Parcelamento + juros\n");
+        scanf("%d", &op);
         switch(op){
             case 1:
             aVista(total);
@@ -51,9 +60,9 @@ int main(){
             printf("Opcao invalida!!!");
             break;
         }
-        printf("\n\tOPCOES DE PAGAMENTO:\n\t1--- A vista\n\t2--- Em 2x\n\t3--- Parcelamento + juros\n\t0--- Sair\n");
-        scanf("%d", &op);
-    }
+        printf("Calcular outra compra?\n");
+	    scanf("%s",&ops);
+    }while(ops == 's');
 
     return 0;
 }

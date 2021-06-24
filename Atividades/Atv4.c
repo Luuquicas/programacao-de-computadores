@@ -38,6 +38,6 @@ int main(){
     }
     */
     res = determinante(mat);
-    printf("RES = %d\n", res);
+    printf("DET = %d\n", res);
     return 0;
 }

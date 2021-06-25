@@ -43,46 +43,46 @@ int void_position(int x, int y){
 
 //Verifica se o jogador ganhou pelas linhas
 int win_line(){
-    int i, j, igual = 1;
+    int i, j, equal = 1;
     for(i=0;i<3;i++){
         for(j=0;j<2;j++){
             if(valid_character(board[i][j]) && board[i][j] == board[i][j+1]){
-                igual++;
+                equal++;
             }
         }
-        if(igual == 3){
+        if(equal == 3){
             return 1;
         }
-        igual = 1;
+        equal = 1;
     }
     return 0;
 }
 
 //Verifica se o jogador ganhou o jogo pelas colunas
 int win_column(){
-    int i, j, igual = 1;
+    int i, j, equal = 1;
     for(i=0;i<3;i++){
         for(j=0;j<2;j++){
             if(valid_character(board[j][i]) && board[j][i] == board[j+1][i]){
-                igual++;
+                equal++;
             }
         }
-        if(igual == 3){
+        if(equal == 3){
             return 1;
         }
-        igual = 1;
+        equal = 1;
     }
     return 0;
 }
 
 //Verifica se o jogador ganhou pela diagonal principal
 int win_diagonal(){
-    int i, igual = 1;
+    int i, equal = 1;
     for(i=0;i<2;i++){
         if(valid_character(board[i][i]) && board[i][i] == board[i+1][i+1]){
-            igual++;
+            equal++;
         }
-        if(igual == 3){
+        if(equal == 3){
             return 1;
         }else{
             return 0;
@@ -92,12 +92,12 @@ int win_diagonal(){
 
 //Verifica se o jogador ganhou pela diagonal secundária
 int win_second_diagonal(){
-    int i, igual = 1;
+    int i, equal = 1;
     for(i = 0; i < 2; i++) {
         if(valid_character(board[i][3-i-1]) && board[i][3-i-1] == board[i+1][3-i-2])
-            igual++;
+            equal++;
     }
-    if(igual == 3)
+    if(equal == 3)
         return 1;
     else
         return 0;

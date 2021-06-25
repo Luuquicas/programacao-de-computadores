@@ -5,7 +5,7 @@ char board[3][3];
 char player1[50], player2[50];
 
 //Inicia a matriz com algum caractere qualquer
-void startMatriz(){
+void start_matriz(){
     for(int i=0;i<3;i++){
         for(int j=0;j<3;j++){
             board[i][j] = 'a';
@@ -14,7 +14,7 @@ void startMatriz(){
 }
 
 //Valida o caractere inserido pelo usuário
-int validChar(char letra){
+int valid_character(char letra){
     if(letra == 'x' || letra == '0'){
         return 1;
     }else{
@@ -23,7 +23,7 @@ int validChar(char letra){
 }
 
 //Valida a posição da inserção do caractere
-int validCoordenate(int x, int y){
+int valid_coordenate(int x, int y){
     if(x >= 0 && x < 3){
         if(y >= 0 && y < 3){
             return 1;
@@ -33,7 +33,7 @@ int validCoordenate(int x, int y){
 }
 
 //Verifica se a posição desejada está vazia
-int voidPos(int x, int y){
+int void_position(int x, int y){
     if(board[x][y] != 'x' && board[x][y] != '0'){
         return 1;
     }else{
@@ -42,11 +42,11 @@ int voidPos(int x, int y){
 }
 
 //Verifica se o jogador ganhou pelas linhas
-int winLine(){
+int win_line(){
     int i, j, igual = 1;
     for(i=0;i<3;i++){
         for(j=0;j<2;j++){
-            if(validChar(board[i][j]) && board[i][j] == board[i][j+1]){
+            if(valid_character(board[i][j]) && board[i][j] == board[i][j+1]){
                 igual++;
             }
         }
@@ -59,11 +59,11 @@ int winLine(){
 }
 
 //Verifica se o jogador ganhou o jogo pelas colunas
-int winColumn(){
+int win_column(){
     int i, j, igual = 1;
     for(i=0;i<3;i++){
         for(j=0;j<2;j++){
-            if(validChar(board[j][i]) && board[j][i] == board[j+1][i]){
+            if(valid_character(board[j][i]) && board[j][i] == board[j+1][i]){
                 igual++;
             }
         }
@@ -76,10 +76,10 @@ int winColumn(){
 }
 
 //Verifica se o jogador ganhou pela diagonal principal
-int winDiagonal(){
+int win_diagonal(){
     int i, igual = 1;
     for(i=0;i<2;i++){
-        if(validChar(board[i][i]) && board[i][i] == board[i+1][i+1]){
+        if(valid_character(board[i][i]) && board[i][i] == board[i+1][i+1]){
             igual++;
         }
         if(igual == 3){
@@ -91,10 +91,10 @@ int winDiagonal(){
 }
 
 //Verifica se o jogador ganhou pela diagonal secundária
-int winDiagSecond(){
+int win_second_diagonal(){
     int i, igual = 1;
     for(i = 0; i < 2; i++) {
-        if(validChar(board[i][3-i-1]) && board[i][3-i-1] == board[i+1][3-i-2])
+        if(valid_character(board[i][3-i-1]) && board[i][3-i-1] == board[i+1][3-i-2])
             igual++;
     }
     if(igual == 3)
@@ -104,14 +104,14 @@ int winDiagSecond(){
 }
 
 //Imprime na tela o tabuleiro
-void printBoard(){
+void print_board(){
     int l, c;
 
     printf("\n\t    0  1  2\n");
     for(l=0;l<3;l++) {
         printf("\t%d ", l);
         for(c=0;c<3;c++) {
-            if(validChar(board[l][c])) {
+            if(valid_character(board[l][c])) {
                 if(c < 2)
                     printf(" %c |", board[l][c]);
                 else
@@ -129,17 +129,17 @@ void printBoard(){
 }
 
 //Prodecimento jogar
-void play(){
+void play_game(){
     int x, y, valida, ordem = 1, winner = 0, jogadas = 0;
 
     do{
         do{
-            printBoard();
+            print_board();
             printf("\nDigite a coordenada que deseja preencher: ");
             scanf("%d %d", &x, &y);
-            valida = validCoordenate(x, y);
+            valida = valid_coordenate(x, y);
             if(valida == 1){
-                valida += voidPos(x, y);
+                valida += void_position(x, y);
             }
         }while(valida != 2);
 
@@ -155,10 +155,10 @@ void play(){
         if(ordem == 3){
             ordem = 1;
         }
-        winner += winLine();
-        winner += winColumn();
-        winner += winDiagonal();
-        winner += winDiagSecond();
+        winner += win_line();
+        winner += win_column();
+        winner += win_diagonal();
+        winner += win_second_diagonal();
 
     }while(winner == 0 && jogadas < 9);
     if(winner != 0){
@@ -173,17 +173,19 @@ void play(){
 int main(){
     int op;
 
-    printf("Jogador 1 digite seu nome: ");
+    printf("Jogador 1, digite seu nome: ");
     fgets(player1, 50, stdin);
-    printf("Jogador 2 digite seu nome: ");
+    printf("Jogador 2, digite seu nome: ");
     fgets(player2, 50, stdin);
 
     do{
-        startMatriz();
-        play();
+        start_matriz();
+        play_game();
         printf("Deseja jogar novamente?\n1 -- Sim\n2 -- Nao\n");
         scanf("%d", &op);
     }while(op == 1);
+
+    system("pause");
 
     return 0;
 }

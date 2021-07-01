@@ -17,7 +17,14 @@ int main()
     {
         printf("%d ", p[i]);
     }
+    
+    //Realocar memoria
+    p = realloc(p,3*sizeof(int));
+    printf("\nOs valores realocados sao: ");
+    for(i=0;i<3;i++)
+    {
+        printf("%d ", p[i]);
+    }
     free(p);
-
     return 0;
 }

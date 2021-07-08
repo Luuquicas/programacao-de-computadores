@@ -36,10 +36,10 @@ int main(){
 
     do{
         total=0;
-		printf("Informe os precos:\n");
+		printf("Informe os precos:\nPressione -1 para encerrar.\n");
 	    scanf("%f",&preco);
-		do{
-			total=total+preco;
+		do{          
+            total=total+preco;
 			scanf("%f",&preco);
 		}while(preco != -1);
         printf("\nTotal = R$%.2f\n", total);

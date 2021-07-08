@@ -12,7 +12,62 @@ int compara_aposta(int *aposta, int *sorteio,int *val_certos,int na, int ns);
 É obrigatório o uso de alocação dinâmica de memoria.
 */
 
-int main(){
+void lerAposta(int *aposta, int nAp){
+    int i;
+    printf("Informe os %d valores:\n", nAp);
+    for(i=0; i<nAp; i++){
+        printf("Valor %d: ", i+1);
+        scanf("%d", &aposta[i]);
+    }
+}
 
+void sorteiaValores(int *sorteio, int tam){
+    int i;
+    srand(time(NULL));
+    for(i=0;i<tam;i++){
+        sorteio[i] = rand() % 100;
+    }
+}
+
+int comparaValores(int *aposta, int *sorteio, int *valCertos, int nAp, int nSorteio){
+    int i, j, n=0;
+    for(i=0;i<nAp;i++){
+        for(j=0;j<nSorteio;j++){
+            if(aposta[i] == sorteio[j]){
+                if(n == 0){
+                valCertos[n] = aposta[i];
+                n++; 
+                }else{
+                    valCertos = realloc(valCertos,(n+1) * sizeof(int));
+                    valCertos[n] = aposta[i];
+                    n++;
+                }
+            }
+        }
+    }
+    return n;
+}
+
+int main(){
+    int nAp, *aposta, sorteio[20], nSort, *valCertos, qntCertos;
+    printf("Informe a quantidade de numeros a serem apostados: ");
+    scanf("%d", &nAp);
+
+    aposta = malloc(nAp * sizeof(int));
+    valCertos = malloc(1 * sizeof(int));
+
+    sorteiaValores(sorteio, 20);
+    lerAposta(aposta, nAp);
+    qntCertos = comparaValores(aposta, sorteio,valCertos,nAp,20);
+
+    if(qntCertos > 0){
+        if(qntCertos == 1){
+            printf("Parabens!!! Voce acertou %d numero!!!\n", qntCertos);
+        }else{
+            printf("Parabens!!! Voce acertou %d numeros!!!\n", qntCertos);
+        }
+    }else{
+        printf("Que pena, voce teve %d acertos :(\n", qntCertos);
+    }
     return 0;
 }

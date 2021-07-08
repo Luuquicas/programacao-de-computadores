@@ -1,67 +1,118 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int main(){
-    int dim=0, i=0, j=0, k=0, count=0;
-    double fator=0, aux=0;
+int main( void )
+{
 
-    printf("Informe a dimensao da matriz: ");
-    scanf("%d", &dim);
+    int i = 0, j = 0, k = 0, contador = 0, contador_2 = 0, det = 0;
+    int valor = 0, soma_direita = 0, soma_esquerda = 0, ordem = 0;
+    int matriz[100][100];
 
-    double a[dim][dim];
+    // Zera matriz, veti e vetj
+    for ( i = 0; i < 100; i++ )
+    {
 
-    printf("\n\nEntre com o conteudo da matriz\n\n");
-    for(i=0; i<dim; i++){
-        for(j=0; j<dim; j++){
-            printf("A[%d ; %d] => ", i + 1, j + 1);
-            scanf("%lf", &a[i][j]);
-        }
+        for ( j = 0; j < 100; j++ )
+            matriz[i][j] = 0;
+
     }
 
-    //printa a matriz
-    printf("\nMatriz digitada:\n");
-    for(i=0; i<dim; i++){
-        for(j=0; j<dim; j++){
-            printf("%.0f ", a[i][j]);
-        }
-        putchar('\n');
-    }
+    printf( "\n\tCalculo do determinante de uma matriz quadrada de ordem N\n\n");
+    printf( "Informe a ordem da matriz:  ");
+    scanf("%d", &ordem);
 
-    //transformando num triângulo
-    for(i=0; i<dim-1; i++){
-        if(a[i][i] == 0){
-            for(k=i; k<dim; k++){
-                if(a[k][i] != 0){
-                    for(j=0; j<dim; j++){
-                        aux = a[i][j];
-                        a[i][j] = a[k][j];
-                        a[k][j] = aux;
-                    }
-                    k = dim;
-                }
+
+    // Leitura dos valores na matriz
+    for ( i = 0; i < ordem; i++ )
+    {
+
+          for( j = 0; j < ordem; j++ )
+            {
+
+                   printf("Informe o valor [%d][%d]: ", i + 1, j + 1);
+                   scanf("%d", &valor);
+
+                   matriz[i][j]=valor;
+
             }
-            count++;
-        }
 
-        if(a[i][i] != 0){
-            for(k=i+1; k<dim; k++){
-                fator = -1.0*a[k][i] / a[i][i];
-                for(j=i; j<dim; j++){
-                    a[k][j] = a[k][j] + (fator*a[i][j]);
-                }
-            }
+    }
+
+    // LEITURA DA DIREITA PARA A ESQUERDA
+    j = 0;
+    k = 0;
+    valor = 1;
+    contador = 0;
+    contador_2 = 0;
+    soma_direita = 0;
+    // Quantidade total de leituras na matriz
+    for ( i = 0; i <= ( ordem * ordem ); i++ )
+    {
+        // Retorna i para inicio da matriz
+        if(j == ordem){
+            j = 0;
+            contador_2++;
+            k = contador_2;
+        }
+        if(k == ordem)
+            k = 0;
+        valor = valor * matriz[j][k];
+        j++;
+        k++;
+        contador++;
+        if(contador == ordem){
+            soma_direita = soma_direita + valor;
+            valor = 1;
+            contador = 0;
         }
     }
-    aux = 1.0;
-    // Calcula o determinante
-    for(i=0; i<dim; i++)
-        aux *= a[i][i];
 
-    printf("\nO determinante:\n");
-    if(count % 2 == 0)
-        printf("%.2lf \n", aux);
-    else
-        printf("%.2lf \n", -1.0*aux);
+    // LEITURA DA ESQUERDA PARA A DIREITA
+    j = 0;
+    k = ordem - 1;
+    valor = 1;
+    contador = 0;
+    contador_2 = ordem - 1;
+    soma_esquerda = 0;
+    // Quantidade total de leituras na matriz
+    for ( i = 0; i <= ( ordem * ordem ); i++ )
+    {
+
+        // Retorna i para inicio da matriz
+        if ( j == ordem )
+        {
+
+            j = 0;
+            contador_2--;
+            k = contador_2;
+
+        }
+
+        if ( k < 0 )
+            k = ordem -1 ;
+
+        valor = valor * matriz[j][k];
+
+        j++;
+        k--;
+        contador++;
+
+        if ( contador == ordem )
+        {
+
+            soma_esquerda = soma_esquerda + valor;
+            valor = 1;
+            contador = 0;
+
+        }
+
+
+    }
+
+    det = soma_direita + ( soma_esquerda * (-1) );
+
+    printf("\nO Determinante e %d:\n\n", det);
 
     return 0;
+
 }

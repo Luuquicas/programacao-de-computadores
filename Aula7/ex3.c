@@ -15,4 +15,5 @@ int main(){
     scanf("%f %f", &base, &potencia);
     res = potency(base,potencia);
     printf("%.0f", res);
+    return 0;
 }

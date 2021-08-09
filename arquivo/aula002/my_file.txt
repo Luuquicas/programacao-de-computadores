@@ -1,0 +1,1 @@
+Testando novamente arquivo em C, agora escrevendo e lendo o mesmo

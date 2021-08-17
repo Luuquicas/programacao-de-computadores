@@ -4,6 +4,36 @@ void posiciona(char **nav,int jogador);
 void mostratabuleiro(char **nav1);
 void atira(char **nav1,char **nav2,char **tir1,char **tir2);
 
+/**
+ * 1- I) A funcionalidade do código é representar um mini-game de batalha naval, nele temos um tabuleiro
+ * onde podemos selecionar por coordenadas a posição em que desejamos posicionar nossos navios, para
+ * depois confrontar os navios no adversário, as operações realizadas são as de posicionar o navio a
+ * partir de coordenadas e a de atirar no navio inimigo.
+ * 
+ * II) A função 'posiciona' tem como parâmetro a matriz 'nav' que representa o esquema do determinado jogador,
+ * e o nome para que seja identificado. A função vai printar na tela o tabuleiro com o esquema do jogador
+ * e vai pedir para que informe as coordenadas de linha e coluna, testa se são coordenadas válidas e 
+ * que ainda não foram preenchidas, após isso, pede a direção em que o navio será posicionado,
+ * se for válida, ele pede para informar o navio desejado, depois é feito o teste de tamanho
+ * dos navios, se couber no espaço da coordenada informada, o navio será posicionado, se não, é imprimida
+ * uma mensagem informando que deterinado navio não coube naquele lugar. A função é do tipo void pois não
+ * precisa de retorno, pois ela apenas modifica a matriz recebida como parâmetro, sem necessidade de 
+ * retorná-la para a função principal.
+ * 
+ * III) A função 'mostratabuleiro' tem como parâmetro a matriz que representa o esquema de determinado jogador.
+ * Dentro da função existe um laço de repetição para imprimir cada casa da matriz mostrando o que tem dentro de cada
+ * espaço, como se fosse de fato o tabuleiro representando o esquema definido pelo jogador e as posições dos
+ * navios.
+ * 
+ * IV) Esta função recebe como parâmetros as matrizes que representam os navios posicionados pelos jogadores
+ * 1 e 2 e a matriz que representa onde serão efetuados os tiros. Ela pede a coordenada de onde será efetuado 
+ * os três tiros, verifica se cada coordenada é válida, se for válida ela marca a posição do tiro. Depois
+ * que os tiros são efetuados, ela compara a matriz que contém a posição dos tiros com a matriz que representa
+ * a posição dos navios adversários, se a posição do tiro for igual a posição de um navio adversário, ela elimina 
+ * o navio e no final mostra a pontuação conquistada pela quantidade de navios afundados, quando um jogador 
+ * afunda todos os navios adversários, ele ganha o jogo.
+ * */
+
 int main() 														
 {
 	char **navios1,**navios2,**tiros1,**tiros2;
